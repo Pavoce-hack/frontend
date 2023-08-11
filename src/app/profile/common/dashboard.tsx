@@ -37,7 +37,7 @@ const Dashboard: React.FC = () => {
 
     return (
         <div className="w-full h-screen center">
-            <div className="w-[20%] pt-10 bg-lightBlue h-full flex items-center flex-col">
+            <div className="w-[20%] pt-10 bg-lightBlue min-h-screen flex items-center flex-col">
                 <div className="w-[80%]">
                     <Logo />
                 </div>

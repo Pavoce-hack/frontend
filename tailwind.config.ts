@@ -22,6 +22,7 @@ const config: Config = {
       blue: "#3A62F2",
       lightBlue: "#F4F6FE",
       darkBlue: "#050D2A",
+      lightGray: "#5E5E5E",
       red: "#E60000",
     },
     extend: {
