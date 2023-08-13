@@ -26,7 +26,7 @@ interface InvoiceContextType {
     InvoiceInfo: InvoiceInfo | null;
     setInvoiceInfo: React.Dispatch<React.SetStateAction<InvoiceInfo | null>>;
 }
-
+export const AccountContext = createContext(null)
 const InvoiceContext = createContext<InvoiceContextType | undefined>(undefined);
 
 interface InvoiceProviderProps {

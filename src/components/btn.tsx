@@ -1,20 +1,22 @@
-'use client'
+"use client";
 
-import { CustomButtonTypes } from "@/types/button"
+import { CustomButtonTypes } from "@/types/button";
 
 interface CustomButtonProps extends CustomButtonTypes {
-    onClick: React.MouseEventHandler<HTMLButtonElement>;
+  onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined;
+  buttonType?: "button" | "submit" | "reset" | undefined
 }
 
 const CustomButton: React.FC<CustomButtonProps> = ({
-  border = '1px solid #3A62F2',
+  border = "1px solid #3A62F2",
   onClick,
-  background = '#FFFFFF',
-  textColor = '#3A62F2',
-  padding = '10px 20px',
-  cursor = 'pointer',
+  background = "#FFFFFF",
+  textColor = "#3A62F2",
+  padding = "10px 20px",
+  cursor = "pointer",
   children,
-  textSize = '1rem',
+  textSize = "1rem",
+  buttonType,
 }) => {
   const buttonStyle = {
     border,
@@ -26,7 +28,12 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   };
 
   return (
-    <button className="center sans border w-full hover:scale-95 transition duration-300 rounded-lg gap-2 font-semibold" onClick={onClick} style={buttonStyle}>
+    <button
+      className="center sans border w-full hover:scale-95 transition duration-300 rounded-lg gap-2 font-semibold"
+      onClick={onClick}
+      style={buttonStyle}
+      type={buttonType}
+    >
       {children}
     </button>
   );
