@@ -1,8 +1,12 @@
 'use client'
 
+import Dashboard from "./common/dashboard";
+
 const Profile = () => {
     return (
-        <div>hello</div>
+        <div className="center w-screen min-h-screen">
+            <Dashboard />
+        </div>
     );
 }
  

@@ -5,14 +5,14 @@ import Image from "next/image";
 import { AiOutlinePlayCircle } from "react-icons/ai";
 import Link from "next/link";
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
-import { WalletContext } from "@/app/provider";
+import { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 
 const Hero = () => {
-  const account = useContext(WalletContext);
-  const [changed, setChanged] = useState(false);
-  const { isConnected } = useAccount();
+  const { address } = useAccount();
+  const account = address;
+  const [btnText, setBtnText] = useState<string>("Get Started");
+  const [href, setHref] = useState<string>("/auth");
 
   const loginUser = async () => {
     try {
@@ -23,29 +23,25 @@ const Hero = () => {
       );
       if (loginResponse.status === 200) {
         document.cookie = `pavoce=${loginResponse.data.token}`;
-        window.location.href = "/dashboard";
+        setHref("/profile");
+        setBtnText("Go To Dashboard");
       }
-      console.log(loginResponse.status);
     } catch (error: any) {
       console.error(error);
-      if (
-        error.response.data === "User not found, kindly register" &&
-        isConnected
-      ) {
-        window.location.href = "/auth";
-      }
     }
   };
 
   useEffect(() => {
-    loginUser();
-  }, [account, changed]);
+    if (account) {
+      loginUser();
+    } else {
+      setBtnText("Get Started");
+      setHref("/");
+    }
+  }, [account, loginUser]);
 
   return (
-    <div
-      className="flex items-center flex-col gap-6 mt-16 text-center min-h-[80vh]"
-      onMouseMove={() => setChanged(!changed)}
-    >
+    <div className="flex items-center flex-col gap-6 mt-16 text-center min-h-[80vh]">
       <h1 className="text-xxxl font-bold sentient leading-tight capitalize text-darkBlue">
         Send invoices and receive payments effortlessly
       </h1>
@@ -55,14 +51,14 @@ const Hero = () => {
         cryptocurrencies
       </p>
       <div className="center gap-6">
-        <Link href="/auth">
+        <Link href={href}>
           <CustomButton
             onClick={() => {}}
             padding="10px 30px"
             background="#3A62F2"
             textColor="#FFFFFF"
           >
-            Get Started
+            {btnText}
           </CustomButton>
         </Link>
         <div>
