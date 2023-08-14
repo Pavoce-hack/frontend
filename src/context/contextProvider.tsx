@@ -27,6 +27,7 @@ interface InvoiceContextType {
     InvoiceInfo: InvoiceInfo | null;
     setInvoiceInfo: React.Dispatch<SetStateAction<InvoiceInfo | null>>;
 }
+<<<<<<< HEAD
 
 const initialInvoiceInfo: InvoiceInfo = {
     businessName: "",
@@ -49,6 +50,9 @@ const initialInvoiceInfo: InvoiceInfo = {
     terms: "",
 };
 
+=======
+export const AccountContext = createContext(null)
+>>>>>>> 541902556a04e9adf2edb27f70a69cf8241a3160
 const InvoiceContext = createContext<InvoiceContextType | undefined>(undefined);
 
 interface InvoiceProviderProps {
