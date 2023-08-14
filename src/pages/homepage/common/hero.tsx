@@ -10,35 +10,48 @@ import { useAccount } from "wagmi";
 
 const Hero = () => {
   const { address } = useAccount();
-  const account = address;
   const [btnText, setBtnText] = useState<string>("Get Started");
   const [href, setHref] = useState<string>("/auth");
+
+  const deleteCookie = (name: string) => {
+    document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+  };
 
   const loginUser = async () => {
     try {
       const loginResponse = await axios.post(
         "http://localhost:4000/user/login",
-        { walletId: account },
+        { walletId: address },
         { headers: { "Content-Type": "application/json" } }
       );
       if (loginResponse.status === 200) {
         document.cookie = `pavoce=${loginResponse.data.token}`;
         setHref("/profile");
         setBtnText("Go To Dashboard");
-      }
+        localStorage.setItem("status", JSON.stringify("loggedIn"));
+      } else return;
     } catch (error: any) {
       console.error(error);
     }
   };
 
   useEffect(() => {
-    if (account) {
+    const statusFromStorage = localStorage.getItem("status");
+    const userStatus = statusFromStorage && JSON.parse(statusFromStorage);
+    if (!userStatus && address) {
       loginUser();
-    } else {
+    }
+    if (statusFromStorage && address) {
+      setHref("/profile");
+      setBtnText("Go To Dashboard");
+    }
+    if (!address) {
       setBtnText("Get Started");
       setHref("/");
+      deleteCookie("pavoce");
+      localStorage.removeItem("status");
     }
-  }, [account, loginUser]);
+  }, [address, loginUser]);
 
   return (
     <div className="flex items-center flex-col gap-6 mt-16 text-center min-h-[80vh]">

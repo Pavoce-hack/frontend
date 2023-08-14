@@ -7,6 +7,7 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { useAccount } from "wagmi";
+import { usePathname } from "next/navigation";
 
 interface UserDetails {
   fullName: string;
@@ -17,6 +18,9 @@ interface UserDetails {
 }
 
 const Auth = () => {
+  const pathname = usePathname();
+  console.log(pathname);
+
   const { address } = useAccount();
   const [userDetails, setUserDetails] = useState<UserDetails>({
     fullName: "",
@@ -25,7 +29,6 @@ const Auth = () => {
     profilePic: null,
     businessLogo: null,
   });
-  const [bg, setBg] = useState<string>("");
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, files } = event.target;
@@ -38,7 +41,6 @@ const Auth = () => {
         if (files) {
           userDetails.businessLogo = files[0];
           userDetails.profilePic = files[0];
-          setBg(URL.createObjectURL(userDetails.businessLogo));
         }
       }
       return { ...prevDetails, walletId: address };
@@ -59,7 +61,6 @@ const Auth = () => {
           },
         }
       );
-      console.log(response);
 
       if (response.status === 201) {
         toast.success(response.data.message);
@@ -85,7 +86,7 @@ const Auth = () => {
             <h2 className="text-xl font-bold text-center">Just a moment...</h2>
             <p className="text-center text-md">Let us know you</p>
             <div className="flex flex-col gap-2 w-1/3">
-              <label htmlFor="name" className="font-semibold">
+              <label htmlFor="businessName" className="font-semibold">
                 Business Name:
               </label>
               <input
@@ -98,34 +99,25 @@ const Auth = () => {
               />
             </div>
             <div className="flex flex-col gap-2 w-1/3 ">
-              <div
-                className="profilePhoto"
+              <label
+                htmlFor="businessPhoto"
+                className="text-base border w-40 h-40 mx-auto flex justify-center items-center bg-cover bg-center bg-no-repeat rounded-md"
                 style={{
-                  backgroundImage: `url("${bg}")`,
-                  width: "10rem",
-                  height: "10rem",
-                  border: "1px solid grey",
-                  margin: "0 auto",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  backgroundSize: "100% 100%",
-                  backgroundRepeat: "no-repeat",
-                  backgroundPosition: "center",
-                  borderRadius: ".5rem",
+                  backgroundImage: `url("${
+                    userDetails.businessLogo
+                      ? URL.createObjectURL(userDetails.businessLogo)
+                      : null
+                  }")`,
+                  borderColor: "#B8B8B8",
                 }}
               >
-                {!bg && "Profile Photo"}
-              </div>
-
-              <label htmlFor="photo" className="font-semibold">
-                Upload Photo
+                {!userDetails.businessLogo && "Upload profile image"}
               </label>
               <input
                 type="file"
                 name="businessLogo"
                 id="businessPhoto"
-                className="border border-[#B8B8B8] outline-none border-DarkGray px-5 py-3 text-black rounded-lg"
+                className="border border-[#B8B8B8] outline-none border-DarkGray px-5 py-3 text-black rounded-lg hidden"
                 onChange={handleInputChange}
                 accept="image/*"
               />
@@ -140,7 +132,7 @@ const Auth = () => {
                 Continue
               </CustomButton>
 
-              <Link href="/profile"></Link>
+              {/* <Link href="/profile"></Link> */}
             </div>
           </form>
         ) : (
