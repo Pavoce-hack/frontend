@@ -31,7 +31,10 @@ const Profile: React.FC = () => {
 
     return (
         <div className="w-full pt-8 flex items-center flex-col">
-            <div className="between">
+            <h2 className="font-bold text-lg text-left w-full ml-6 mb-10">
+                Dashboard
+            </h2>
+            <div className="between ">
                 <div className="w-[42%] center gap-6 flex-wrap">
                     <div className="center w-[45%] flex-col border border-[#F7F7F7] p-4">
                         <div>

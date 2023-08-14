@@ -7,9 +7,9 @@ import { DashboardUtils } from '@/utils/dashboard';
 import Image from 'next/image';
 import Transaction from './transcaction';
 import Client from './client';
-import Services from './services';
 import Profile from './profile';
 import Invoice from './invoice';
+import CreateInvoice from './createInvoice';
 
 const Dashboard: React.FC = () => {
     const [activeTab, setActiveTab] = useState(0);
@@ -23,9 +23,9 @@ const Dashboard: React.FC = () => {
           case 0:
             return <Profile />;
           case 1:
-            return <Invoice />;
+            return <CreateInvoice />;
           case 2:
-            return <Services />;
+            return <Invoice />;
           case 3:
             return <Client />;
           case 4:
@@ -36,12 +36,12 @@ const Dashboard: React.FC = () => {
     };
 
     return (
-        <div className="w-full h-screen center">
-            <div className="w-[20%] pt-10 bg-lightBlue min-h-screen flex items-center flex-col">
+        <div className="w-full h-screen center overflow-y-hidden">
+            <div className="w-[20%] pt-10 bg-lightBlue h-screen flex items-center flex-col">
                 <div className="w-[80%]">
                     <Logo />
                 </div>
-                <div className='flex mt-16 w-[80%] flex-col'>
+                <div className='flex mt-20 w-[80%] flex-col'>
                     {DashboardUtils.map((tab, index) => (
                         <div
                             key={index}
@@ -56,7 +56,7 @@ const Dashboard: React.FC = () => {
                     ))}
                 </div>
             </div>
-            <div className="w-[80%] h-full pr-16">
+            <div className="w-[80%] h-full pr-16 overflow-y-scroll">
                 <ProfileNav />
                 {renderTabContent()}
             </div>
