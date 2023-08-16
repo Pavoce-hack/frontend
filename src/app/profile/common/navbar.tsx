@@ -22,7 +22,7 @@ const ProfileNav = () => {
   }, [address]);
 
   return (
-    <div className="pt-10 ended gap-3">
+    <div className="ended gap-3">
       <Web3Button />
     </div>
   );

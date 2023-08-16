@@ -14,7 +14,7 @@ function getCurrentDateTime() {
     const minutes = now.getMinutes();
 
     const formattedDateTime = `${dayOfWeek} ${dayOfMonth} ${month}, ${hours}:${minutes.toString().padStart(2, '0')} ${ampm}`;
-    
+
     return formattedDateTime;
 }
 

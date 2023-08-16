@@ -4,12 +4,12 @@ export const DashboardUtils = [
         icon: '/icons/dashboard.png',
     },
     {
-        tab: 'Invoice',
-        icon: '/icons/invoice.png',
+        tab: 'Create Invoice',
+        icon: '/icons/service.png',
     },
     {
-        tab: 'Services',
-        icon: '/icons/service.png',
+        tab: 'Invoice',
+        icon: '/icons/invoice.png',
     },
     {
         tab: 'Clients',

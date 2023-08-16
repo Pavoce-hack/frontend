@@ -122,17 +122,17 @@ const Auth = () => {
                 accept="image/*"
               />
             </div>
-            <div className="end w-1/3">
-              <CustomButton
-                buttonType="submit"
-                padding="10px 30px"
-                background="#3A62F2"
-                textColor="#FFFFFF"
-              >
-                Continue
-              </CustomButton>
-
-              {/* <Link href="/profile"></Link> */}
+            <div className="">
+              <Link href="/profile">
+                <CustomButton
+                  buttonType="submit"
+                  padding="10px 30px"
+                  background="#3A62F2"
+                  textColor="#FFFFFF"
+                >
+                  Continue
+                </CustomButton>
+              </Link>
             </div>
           </form>
         ) : (

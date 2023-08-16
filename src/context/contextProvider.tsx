@@ -1,9 +1,10 @@
 'use client'
 
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode, SetStateAction } from 'react';
 
 interface InvoiceInfo {
     businessName: string;
+    businessEmail: string;
     businessPhoto: string;
     clientName: string;
     clientEmail: string;
@@ -24,9 +25,30 @@ interface InvoiceInfo {
 
 interface InvoiceContextType {
     InvoiceInfo: InvoiceInfo | null;
-    setInvoiceInfo: React.Dispatch<React.SetStateAction<InvoiceInfo | null>>;
+    setInvoiceInfo: React.Dispatch<SetStateAction<InvoiceInfo | null>>;
 }
-export const AccountContext = createContext(null)
+
+const initialInvoiceInfo: InvoiceInfo = {
+    businessName: "",
+    businessEmail: "",
+    businessPhoto: "",
+    clientName: "",
+    clientEmail: "",
+    startDate: "",
+    endDate: "",
+    serviceTitle: "",
+    serviceDescription: "",
+    serviceQty: 0,
+    serviceRate: 0,
+    bankName: "",
+    accountNumber: 0,
+    installment: 0,
+    initialDeposit: 0,
+    tax: 0,
+    discount: 0,
+    terms: "",
+};
+
 const InvoiceContext = createContext<InvoiceContextType | undefined>(undefined);
 
 interface InvoiceProviderProps {
@@ -34,7 +56,7 @@ interface InvoiceProviderProps {
 }
 
 export const InvoiceProvider: React.FC<InvoiceProviderProps> = ({ children }) => {
-    const [InvoiceInfo, setInvoiceInfo] = useState<InvoiceInfo | null>(null);
+    const [InvoiceInfo, setInvoiceInfo] = useState<InvoiceInfo | null>(initialInvoiceInfo);
 
     return (
         <InvoiceContext.Provider value={{ InvoiceInfo, setInvoiceInfo }}>
@@ -46,7 +68,7 @@ export const InvoiceProvider: React.FC<InvoiceProviderProps> = ({ children }) =>
 export const useInvoiceContext = (): InvoiceContextType => {
     const context = useContext(InvoiceContext);
     if (!context) {
-        throw new Error('useContext must be used within a InvoiceProvider');
+        throw new Error('useContext must be used within an InvoiceProvider');
     }
     return context;
 };

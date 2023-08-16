@@ -16,7 +16,7 @@ const Profile: React.FC = () => {
         setTotalInvoiced(totalInvoiced + 1);
         setPendingInvoices(pendingInvoices + 1);
     };
-    
+
     const handleInvoiceCleared = () => {
         // Logic to mark an invoice as cleared
         setPendingInvoices(pendingInvoices - 1);
@@ -28,7 +28,6 @@ const Profile: React.FC = () => {
         setPendingInvoices(pendingInvoices - 1);
         setDisputedInvoices(disputedInvoices + 1);
     };
-
     return (
         <div className="w-full pt-8 flex items-center flex-col">
             <div className="between">

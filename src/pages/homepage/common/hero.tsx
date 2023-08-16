@@ -17,6 +17,7 @@ const Hero = () => {
     document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const loginUser = async () => {
     try {
       const loginResponse = await axios.post(
@@ -32,6 +33,7 @@ const Hero = () => {
       } else return;
     } catch (error: any) {
       console.error(error);
+      setHref("/auth");
     }
   };
 
