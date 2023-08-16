@@ -35,6 +35,7 @@ const Hero = () => {
     } catch (error: any) {
       console.error(error);
       setHref("/auth");
+      setBtnText("Get Started");
     }
   };
 
