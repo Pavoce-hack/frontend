@@ -7,7 +7,7 @@ import { DashboardUtils } from '@/utils/dashboard';
 import Image from 'next/image';
 import Transaction from './transcaction';
 import Client from './client';
-import Profile from './profile';
+import {Profile} from './profile';
 import Invoice from './invoice';
 import CreateInvoice from './createInvoice';
 

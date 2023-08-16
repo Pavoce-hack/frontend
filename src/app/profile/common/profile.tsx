@@ -1,11 +1,8 @@
 'use client';
 
-import React, { useState } from "react";
-import Image from "next/image";
-import currentDateTime from "./date-time";
-import Link from "next/link";
+import React from "react";
 
-const Profile: React.FC = () => {
+export const Profile: React.FC = () => {
     const [totalInvoiced, setTotalInvoiced] = useState(0);
     const [pendingInvoices, setPendingInvoices] = useState(0);
     const [clearedInvoices, setClearedInvoices] = useState(0);
@@ -29,8 +26,15 @@ const Profile: React.FC = () => {
         setDisputedInvoices(disputedInvoices + 1);
     };
     return (
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
         <div className="w-full pt-8 flex items-center flex-col">
-            <div className="between">
+            <h2 className="font-bold text-lg text-left w-full ml-6 mb-10">
+                Dashboard
+            </h2>
+            <div className="between ">
                 <div className="w-[42%] center gap-6 flex-wrap">
                     <div className="center w-[45%] flex-col border border-[#F7F7F7] p-4">
                         <div>
@@ -115,6 +119,22 @@ const Profile: React.FC = () => {
                     </p>
                 </div>
             </div>
+=======
+        <div className="w-full pt-20 font-bold text-lg center">
+            Coming soon!😥
+>>>>>>> parent of 94d2f4c (completed dashboard)
+=======
+        <div className="w-full pt-20 font-bold text-lg center">
+            Coming soon!😥
+>>>>>>> parent of 94d2f4c (completed dashboard)
+=======
+        <div className="w-full pt-20 font-bold text-lg center">
+            Coming soon!😥
+>>>>>>> parent of 94d2f4c (completed dashboard)
+=======
+        <div className="w-full pt-20 font-bold text-lg center">
+            Coming soon!😥
+>>>>>>> parent of 94d2f4c (completed dashboard)
         </div>
     );
 }

@@ -24,8 +24,12 @@ export default function RootLayout({
       <body className={inter.className}>
         <InvoiceProvider>
           <Providers>
+        <InvoiceProvider>
+          <Providers>
             {children}
             <ToastContainer />
+          </Providers>
+        </InvoiceProvider>
           </Providers>
         </InvoiceProvider>
       </body>
