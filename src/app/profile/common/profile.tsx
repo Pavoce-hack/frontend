@@ -7,6 +7,7 @@ const Profile: React.FC = () => {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         <div className="w-full pt-8 flex items-center flex-col">
             <h2 className="font-bold text-lg text-left w-full ml-6 mb-10">
                 Dashboard
@@ -96,6 +97,10 @@ const Profile: React.FC = () => {
                     </p>
                 </div>
             </div>
+=======
+        <div className="w-full pt-20 font-bold text-lg center">
+            Coming soon!😥
+>>>>>>> parent of 94d2f4c (completed dashboard)
 =======
         <div className="w-full pt-20 font-bold text-lg center">
             Coming soon!😥

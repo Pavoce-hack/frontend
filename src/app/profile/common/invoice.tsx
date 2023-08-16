@@ -7,7 +7,11 @@ const Invoice: React.FC = () => {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         <div className="w-full pt-8 font-bold text-lg center">
+=======
+        <div className="w-full pt-20 font-bold text-lg center">
+>>>>>>> parent of 94d2f4c (completed dashboard)
 =======
         <div className="w-full pt-20 font-bold text-lg center">
 >>>>>>> parent of 94d2f4c (completed dashboard)
