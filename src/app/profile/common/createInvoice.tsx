@@ -4,6 +4,7 @@ import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { useInvoiceContext } from "@/context/contextProvider";
 import { useAccount } from "wagmi";
+import PrintSection from "./printSection";
 
 const CreateInvoice: React.FC = () => {
     const { InvoiceInfo } = useInvoiceContext();
@@ -58,7 +59,13 @@ const CreateInvoice: React.FC = () => {
     }, [amount, discount]);
 
     const handlePrint = () => {
-        window.print();
+        const printContent = document.getElementById("print-section")?.innerHTML;
+        if (printContent) {
+          const originalContent = document.body.innerHTML;
+          document.body.innerHTML = printContent;
+          window.print();
+          document.body.innerHTML = originalContent;
+        }
     };
 
 
@@ -195,88 +202,89 @@ const CreateInvoice: React.FC = () => {
                             className="border outline-none border-DarkGray px-5 py-3 rounded-lg bg-[#F7F7F7]" placeholder="Less than 250 characters."></textarea>
 
                     </div>
-                </div>
-                <div className="w-[60%] h-screen border border-DarkGray rounded-lg p-8">
-                    {InvoiceInfo && (
-                        <div className="w-full between">
-                            <div>
-                                <h3 className="font-bold text-md">{InvoiceInfo.businessName}</h3>
-                                <p className="text-sm">{InvoiceInfo.businessEmail}</p>
-                            </div>
-                            <div className="mr-10">
-                                <Image src="/icons/logo.png" alt="business photo" width={20} height={20}/>
-                            </div>
-                        </div>
-                    )}
-                    <div className="center mt-16">
-                        <div className="w-[60%] flex flex-col min-h-[160px]">
-                            <h4 className="font-semibold text-md mb-3">BILL TO</h4>
-                            <p className="w-full break-all">{clientName}</p>
-                            <p className="w-full break-all">{clientEmail}</p>
-                        </div>
-                        <div className="w-[40%] flex flex-col min-h-[100px]">
-                            <p className="font-semibold">Wallet address:</p>
-                            <p className="text-[0.9rem] w-full break-all">{address}</p>
-                            <p className="font-semibold mt-4">Currency:</p>
-                            <p className="text-[0.9rem] w-full break-all">XRP</p>
-                            <p className="font-semibold mt-4">Duration: {duration} day(s)</p>
-                        </div>
-                    </div>
-                    <div className="bg-[#F7F7F7] p-2 mb-3 mt-6 between">
-                        <div className="w-[60%]">Services</div>
-                        <div className="w-[40%] between">
-                            <div>Qty</div>
-                            <div>Rate</div>
-                            <div>Amount</div>
-                        </div>
-                    </div>
-                    <div className="p-2 mt-6 between">
-                        <div className="w-[60%] flex-col flex">
-                            <p>{serviceTitle}</p>
-                            <p>{description}</p>
-                        </div>
-                        <div className="w-[40%] between">
-                            <div>{quantity}</div>
-                            <div>{rate}</div>
-                            <div>XRP {amount}</div>
-                        </div>
-                    </div>
-                    <div className="p-2 mt-10 between">
-                        <div className="flex flex-col">
-                            <p>Payment: {payment} installation(s)</p>
-                            <p>Initial deposit {deposit}%: XRP {depositTotal} </p>
-                        </div>
-                        <div className="flex flex-col w-[40%]">
-                            <div>
-                                <div className="between w-full">
-                                    <p>Sub Total: </p>
-                                    <p>{amount}</p>
-                                </div>
-                                <div className="between w-full">
-                                    <p>Discount: </p>
-                                    <p>{discount}</p>
-                                </div>
-                            </div>
-                            <div className="between w-full mt-3 border-t pt-3">
-                                    <p>Total:</p>
-                                    <p>{total}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="flex flex-col p-2 w-[60%]">
-                        <p className="font-bold">Terms and Condition:</p>
-                        <p className="break-all">{terms}</p>
-                    </div>
-
                     <div className="flex justify-center mt-6">
-                        <button
-                            onClick={handlePrint}
-                            className="bg-blue-500 text-black px-4 py-2 rounded-md shadow-md hover:bg-blue-600 transition duration-300"
-                        >
-                            Print
-                        </button>
-                    </div>
+                    <button
+                        onClick={handlePrint}
+                        className="bg-blue-500 text-black px-4 py-2 rounded-md shadow-md hover:bg-blue-600 transition duration-300"
+                    >
+                        Print
+                    </button>
                 </div>
+                </div>
+                <PrintSection>
+                    <div className="h-screen border rounded-lg p-8" id="print-section">
+                        {InvoiceInfo && (
+                            <div className="w-full between">
+                                <div>
+                                    <h3 className="font-bold text-md">{InvoiceInfo.businessName}</h3>
+                                    <p className="text-sm">{InvoiceInfo.businessEmail}</p>
+                                </div>
+                                <div className="mr-10">
+                                    <Image src="/icons/logo.png" alt="business photo" width={20} height={20}/>
+                                </div>
+                            </div>
+                        )}
+                        <div className="center mt-16">
+                            <div className="w-[60%] flex flex-col min-h-[160px]">
+                                <h4 className="font-semibold text-md mb-3">BILL TO</h4>
+                                <p className="w-full break-all">{clientName}</p>
+                                <p className="w-full break-all">{clientEmail}</p>
+                            </div>
+                            <div className="w-[40%] flex flex-col min-h-[100px]">
+                                <p className="font-semibold">Wallet address:</p>
+                                <p className="text-[0.9rem] w-full break-all">{address}</p>
+                                <p className="font-semibold mt-4">Currency:</p>
+                                <p className="text-[0.9rem] w-full break-all">XRP</p>
+                                <p className="font-semibold mt-4">Duration: {duration} day(s)</p>
+                            </div>
+                        </div>
+                        <div className="bg-[#F7F7F7] p-2 mb-3 mt-6 between">
+                            <div className="w-[60%]">Services</div>
+                            <div className="w-[40%] between">
+                                <div>Qty</div>
+                                <div>Rate</div>
+                                <div>Amount</div>
+                            </div>
+                        </div>
+                        <div className="p-2 mt-6 between">
+                            <div className="w-[60%] flex-col flex">
+                                <p>{serviceTitle}</p>
+                                <p>{description}</p>
+                            </div>
+                            <div className="w-[40%] between">
+                                <div>{quantity}</div>
+                                <div>{rate}</div>
+                                <div>XRP {amount}</div>
+                            </div>
+                        </div>
+                        <div className="p-2 mt-10 between">
+                            <div className="flex flex-col">
+                                <p>Payment: {payment} installation(s)</p>
+                                <p>Initial deposit {deposit}%: XRP {depositTotal} </p>
+                            </div>
+                            <div className="flex flex-col w-[40%]">
+                                <div>
+                                    <div className="between w-full">
+                                        <p>Sub Total: </p>
+                                        <p>{amount}</p>
+                                    </div>
+                                    <div className="between w-full">
+                                        <p>Discount: </p>
+                                        <p>{discount}</p>
+                                    </div>
+                                </div>
+                                <div className="between w-full mt-3 border-t pt-3">
+                                        <p>Total:</p>
+                                        <p>{total}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="flex flex-col p-2 w-[60%]">
+                            <p className="font-bold">Terms and Condition:</p>
+                            <p className="break-all">{terms}</p>
+                        </div>
+                    </div>
+                </PrintSection>
             </div>
         </div>
     );
