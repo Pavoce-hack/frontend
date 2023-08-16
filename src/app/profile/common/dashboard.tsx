@@ -42,6 +42,9 @@ const Dashboard: React.FC = () => {
 =======
         <div className="w-full h-screen center">
             <div className="w-[20%] pt-10 bg-lightBlue h-full flex items-center flex-col">
+<<<<<<< HEAD
+>>>>>>> parent of 94d2f4c (completed dashboard)
+=======
 >>>>>>> parent of 94d2f4c (completed dashboard)
                 <div className="w-[80%]">
                     <Logo />
