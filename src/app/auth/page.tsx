@@ -3,11 +3,10 @@
 import CustomButton from "@/components/btn";
 import Navbar from "@/pages/homepage/common/nav";
 import Link from "next/link";
-import { useContext, useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { useAccount } from "wagmi";
-import { usePathname } from "next/navigation";
 
 interface UserDetails {
   fullName: string;
@@ -18,9 +17,6 @@ interface UserDetails {
 }
 
 const Auth = () => {
-  const pathname = usePathname();
-  console.log(pathname);
-
   const { address } = useAccount();
   const [userDetails, setUserDetails] = useState<UserDetails>({
     fullName: "",
