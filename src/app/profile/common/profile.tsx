@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import currentDateTime from "./date-time";
-import Link from "next/link";
 
 const Profile: React.FC = () => {
     const [totalInvoiced, setTotalInvoiced] = useState(0);
