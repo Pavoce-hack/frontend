@@ -7,6 +7,7 @@ import Link from "next/link";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
+import heroImage from "../../../../public/images/mockup.png";
 
 const Hero = () => {
   const { address } = useAccount();
@@ -33,6 +34,8 @@ const Hero = () => {
       } else return;
     } catch (error: any) {
       console.error(error);
+      setHref("/auth");
+      setBtnText("Get Started");
     }
   };
 
@@ -83,7 +86,7 @@ const Hero = () => {
         </div>
       </div>
       <div>
-        <Image src="/images/mockup.png" alt="mockup" width={500} height={590} />
+        <Image src={heroImage} alt="mockup" width={500} height={590} />
       </div>
     </div>
   );

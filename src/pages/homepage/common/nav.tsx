@@ -27,7 +27,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div>
-                <Web3Button />
+                <Web3Button label={undefined} avatar={undefined} balance={undefined} icon={undefined} />
             </div>
         </nav>
     );

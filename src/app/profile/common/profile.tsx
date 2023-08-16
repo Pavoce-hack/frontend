@@ -1,18 +1,36 @@
 'use client';
 
-import React from "react";
+import React, { useState } from "react";
+import Image from "next/image";
+import currentDateTime from "./date-time";
+import Link from "next/link";
 
 const Profile: React.FC = () => {
+    const [totalInvoiced, setTotalInvoiced] = useState(0);
+    const [pendingInvoices, setPendingInvoices] = useState(0);
+    const [clearedInvoices, setClearedInvoices] = useState(0);
+    const [disputedInvoices, setDisputedInvoices] = useState(0);
+
+    const handleCreateInvoice = () => {
+        // Logic to create an invoice
+        setTotalInvoiced(totalInvoiced + 1);
+        setPendingInvoices(pendingInvoices + 1);
+    };
+
+    const handleInvoiceCleared = () => {
+        // Logic to mark an invoice as cleared
+        setPendingInvoices(pendingInvoices - 1);
+        setClearedInvoices(clearedInvoices + 1);
+    };
+
+    const handleInvoiceDisputed = () => {
+        // Logic to mark an invoice as disputed
+        setPendingInvoices(pendingInvoices - 1);
+        setDisputedInvoices(disputedInvoices + 1);
+    };
     return (
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
         <div className="w-full pt-8 flex items-center flex-col">
-            <h2 className="font-bold text-lg text-left w-full ml-6 mb-10">
-                Dashboard
-            </h2>
-            <div className="between ">
+            <div className="between">
                 <div className="w-[42%] center gap-6 flex-wrap">
                     <div className="center w-[45%] flex-col border border-[#F7F7F7] p-4">
                         <div>
@@ -97,22 +115,6 @@ const Profile: React.FC = () => {
                     </p>
                 </div>
             </div>
-=======
-        <div className="w-full pt-20 font-bold text-lg center">
-            Coming soon!😥
->>>>>>> parent of 94d2f4c (completed dashboard)
-=======
-        <div className="w-full pt-20 font-bold text-lg center">
-            Coming soon!😥
->>>>>>> parent of 94d2f4c (completed dashboard)
-=======
-        <div className="w-full pt-20 font-bold text-lg center">
-            Coming soon!😥
->>>>>>> parent of 94d2f4c (completed dashboard)
-=======
-        <div className="w-full pt-20 font-bold text-lg center">
-            Coming soon!😥
->>>>>>> parent of 94d2f4c (completed dashboard)
         </div>
     );
 }

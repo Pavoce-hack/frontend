@@ -19,11 +19,16 @@ const ProfileNav = () => {
       deleteCookie("pavoce");
       router.push("/");
     }
-  }, [address]);
+  }, [address, pathname, router]);
 
   return (
-    <div className="pt-10 ended gap-3">
-      <Web3Button />
+    <div className="ended gap-3">
+      <Web3Button
+        label={undefined}
+        avatar={undefined}
+        balance={undefined}
+        icon={undefined}
+      />
     </div>
   );
 };

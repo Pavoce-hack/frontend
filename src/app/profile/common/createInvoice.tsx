@@ -81,10 +81,6 @@ const CreateInvoice: React.FC = () => {
                         <input type="number" name="Rate" placeholder="100" id="Rate" className='border  outline-none border-DarkGray px-5 py-3 text-black rounded-lg bg-[#F7F7F7]' />
                     </div>
                     <div className="flex flex-col gap-1">
-                        <label htmlFor="walletAddress">Wallet Address</label>
-                        <input type="text" placeholder="Enter your wallet address" name="walletAddress" id="walletAddress" className='border outline-none border-DarkGray px-5 py-3 text-black rounded-lg bg-[#F7F7F7]' />
-                    </div>
-                    <div className="flex flex-col gap-1">
                         <label htmlFor="installment">Installment</label>
                         <input type="number" placeholder="2" name="installment" id="installment" className='border outline-none border-DarkGray px-5 py-3 text-black rounded-lg bg-[#F7F7F7]' />
                     </div>

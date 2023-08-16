@@ -22,20 +22,8 @@ const config: Config = {
       blue: "#3A62F2",
       lightBlue: "#F4F6FE",
       darkBlue: "#050D2A",
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
       DarkGray: '#B8B8B8',
       lightGray: "#5E5E5E",
-=======
->>>>>>> parent of 94d2f4c (completed dashboard)
-=======
->>>>>>> parent of 94d2f4c (completed dashboard)
-=======
->>>>>>> parent of 94d2f4c (completed dashboard)
-=======
->>>>>>> parent of 94d2f4c (completed dashboard)
       red: "#E60000",
     },
     extend: {
