@@ -7,5 +7,4 @@ export interface CustomButtonTypes {
     cursor?: string;
     children: React.ReactNode;
     textSize?: string;
-    disabled: any;
 }

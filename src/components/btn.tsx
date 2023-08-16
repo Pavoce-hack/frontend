@@ -15,13 +15,8 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   padding = "10px 20px",
   cursor = "pointer",
   children,
-<<<<<<< HEAD
-  textSize = '1rem',
-  disabled,
-=======
   textSize = "1rem",
   buttonType,
->>>>>>> 541902556a04e9adf2edb27f70a69cf8241a3160
 }) => {
   const buttonStyle = {
     border,
