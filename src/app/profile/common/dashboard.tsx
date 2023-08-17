@@ -47,7 +47,7 @@ const Dashboard: React.FC = () => {
                             {DashboardUtils.map((tab, index) => (
                                 <div
                                     key={index}
-                                    className={`flex items-center rounded-lg gap-3  cursor-pointer font-semibold leading-tight p-3 transition duration-300 ${
+                                    className={`flex items-center   gap-3  cursor-pointer font-semibold leading-tight p-3 transition duration-300 ${
                                     index === activeTab ? 'bg-[#c4cdee] font-semibold' : 'font-normal'
                                     }`}
                                     onClick={() => handleTabSelect(index)}

@@ -29,7 +29,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
 
   return (
     <button
-      className="center sans border w-full hover:scale-95 transition duration-300 rounded-lg gap-2 font-semibold"
+      className="center sans border w-full hover:scale-95 transition duration-300   gap-2 font-semibold"
       onClick={onClick}
       style={buttonStyle}
       type={buttonType}

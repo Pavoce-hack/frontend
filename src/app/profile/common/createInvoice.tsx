@@ -11,17 +11,17 @@ const CreateInvoice: React.FC = () => {
     const { address } = useAccount();
     const [clientName, setClientName] = useState("");
     const [clientEmail, setClientEmail] = useState("");
-    const [duration, setduration] = useState("");
+    const [duration, setDuration] = useState("");
     const [serviceTitle, setServiceTitle] = useState("");
-    const [quantity, setQuantity] = useState("");
-    const [rate, setRate] = useState("");
-    const [amount, setAmount] = useState("");
+    const [quantity, setQuantity] = useState("0");
+    const [rate, setRate] = useState("0.00");
+    const [amount, setAmount] = useState("0.00");
     const [description, setDescription] = useState("");
     const [payment, setPayment] = useState("");
     const [deposit, setDeposit] = useState("");
-    const [depositTotal, setDepositTotal] = useState("");
-    const [discount, setDiscount] = useState("");
-    const [total, setTotal] = useState("");
+    const [depositTotal, setDepositTotal] = useState("0.00");
+    const [discount, setDiscount] = useState("0");
+    const [total, setTotal] = useState("0.00");
     const [terms, setTerms] = useState("");
 
     useEffect(() => {
@@ -86,7 +86,7 @@ const CreateInvoice: React.FC = () => {
                             name="clientName"
                             required
                             id="client-name"
-                            className="border outline-none border-DarkGray px-5 py-3 text-black rounded-lg bg-[#F7F7F7]"
+                            className="border outline-none border-DarkGray px-5 py-3 text-black   bg-[#F7F7F7]"
                         />
                     </div>
                     <div className="flex flex-col gap-1">
@@ -99,7 +99,7 @@ const CreateInvoice: React.FC = () => {
                             value={clientEmail}
                             onChange={(e) => setClientEmail(e.target.value)}
                             placeholder="Enter client email"
-                            className='border  outline-none border-DarkGray px-5 py-3 text-black rounded-lg bg-[#F7F7F7]' />
+                            className='border  outline-none border-DarkGray px-5 py-3 text-black   bg-[#F7F7F7]' />
                     </div>
                     <div className="flex flex-col gap-1">
                         <label htmlFor="duration">Duration: (in days)</label>
@@ -110,8 +110,8 @@ const CreateInvoice: React.FC = () => {
                             id="duration"
                             required
                             value={duration}
-                            onChange={(e) => setduration(e.target.value)}
-                            className='border  outline-none border-DarkGray px-5 py-3 text-black rounded-lg bg-[#F7F7F7]' />
+                            onChange={(e) => setDuration(e.target.value)}
+                            className='border  outline-none border-DarkGray px-5 py-3 text-black   bg-[#F7F7F7]' />
                     </div>
                     <div className="flex flex-col gap-1">
                         <label htmlFor="serviceTitle">Service Title</label>
@@ -122,7 +122,7 @@ const CreateInvoice: React.FC = () => {
                             id="serviceTitle"
                             value={serviceTitle}
                             onChange={(e) => setServiceTitle(e.target.value)}
-                            className='border  outline-none border-DarkGray px-5 py-3 text-black rounded-lg bg-[#F7F7F7]' />
+                            className='border  outline-none border-DarkGray px-5 py-3 text-black   bg-[#F7F7F7]' />
                     </div>
                     <div className="flex flex-col gap-1">
                         <label htmlFor="serviceDesc">Service Description</label>
@@ -133,7 +133,7 @@ const CreateInvoice: React.FC = () => {
                             id="serviceDesc"
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
-                            className='border  outline-none border-DarkGray px-5 py-3 text-black rounded-lg bg-[#F7F7F7]' />
+                            className='border  outline-none border-DarkGray px-5 py-3 text-black   bg-[#F7F7F7]' />
                     </div>
                     <div className="flex flex-col gap-1">
                         <label htmlFor="Qty">Qty</label>
@@ -144,7 +144,7 @@ const CreateInvoice: React.FC = () => {
                             id="Qty"
                             value={quantity}
                             onChange={(e) => setQuantity(e.target.value)}
-                            className='border  outline-none border-DarkGray px-5 py-3 text-black rounded-lg bg-[#F7F7F7]' />
+                            className='border  outline-none border-DarkGray px-5 py-3 text-black   bg-[#F7F7F7]' />
                     </div>
                     <div className="flex flex-col gap-1">
                         <label htmlFor="Rate">Rate</label>
@@ -155,7 +155,7 @@ const CreateInvoice: React.FC = () => {
                             id="Rate"
                             value={rate}
                             onChange={(e) => setRate(e.target.value)}
-                            className='border  outline-none border-DarkGray px-5 py-3 text-black rounded-lg bg-[#F7F7F7]' />
+                            className='border  outline-none border-DarkGray px-5 py-3 text-black   bg-[#F7F7F7]' />
                     </div>
                     <div className="flex flex-col gap-1">
                         <label htmlFor="installment">Installment</label>
@@ -166,7 +166,7 @@ const CreateInvoice: React.FC = () => {
                             id="installment"
                             value={payment}
                             onChange={(e) => setPayment(e.target.value)}
-                            className='border outline-none border-DarkGray px-5 py-3 text-black rounded-lg bg-[#F7F7F7]' />
+                            className='border outline-none border-DarkGray px-5 py-3 text-black   bg-[#F7F7F7]' />
                     </div>
                     <div className="flex flex-col gap-1">
                         <label htmlFor="initialDeposit">Initial Deposit %</label>
@@ -177,7 +177,7 @@ const CreateInvoice: React.FC = () => {
                             id="initialDeposit"
                             value={deposit}
                             onChange={(e) => setDeposit(e.target.value)}
-                            className='border outline-none border-DarkGray px-5 py-3 text-black rounded-lg bg-[#F7F7F7]' />
+                            className='border outline-none border-DarkGray px-5 py-3 text-black   bg-[#F7F7F7]' />
 
                     </div>
                     <div className="flex flex-col gap-1">
@@ -189,7 +189,7 @@ const CreateInvoice: React.FC = () => {
                             id="discount"
                             value={discount}
                             onChange={(e) => setDiscount(e.target.value)}
-                            className='border outline-none border-DarkGray px-5 py-3 text-black rounded-lg bg-[#F7F7F7]'
+                            className='border outline-none border-DarkGray px-5 py-3 text-black   bg-[#F7F7F7]'
                         />
                     </div>
                     <div className="flex flex-col gap-1">
@@ -199,92 +199,94 @@ const CreateInvoice: React.FC = () => {
                             id="terms"
                             value={terms}
                             onChange={(e) => setTerms(e.target.value)}
-                            className="border outline-none border-DarkGray px-5 py-3 rounded-lg bg-[#F7F7F7]" placeholder="Less than 250 characters."></textarea>
+                            className="border outline-none border-DarkGray px-5 py-3   bg-[#F7F7F7]" placeholder="Less than 250 characters."></textarea>
 
                     </div>
+                </div>
+                <div className="flex flex-col w-[60%]">
+                    <PrintSection>
+                        <div className="w-full h-full   p-3" id="print-section">
+                            {InvoiceInfo && (
+                                <div className="w-full between">
+                                    <div>
+                                        <h3 className="font-bold text-md">{InvoiceInfo.businessName}</h3>
+                                        <p className="text-sm">{InvoiceInfo.businessEmail}</p>
+                                    </div>
+                                    <div className="">
+                                        <Image src="/icons/logo.png" alt="business photo" width={20} height={20}/>
+                                    </div>
+                                </div>
+                            )}
+                            <div className="center mt-16">
+                                <div className="w-[60%] flex flex-col min-h-[160px]">
+                                    <h5 className="font-semibold text-md mb-3">BILL TO</h5>
+                                    <p className="w-full break-all font-semibold text-[.9rem]">{clientName}</p>
+                                    <p className="w-full break-all">{clientEmail}</p>
+                                </div>
+                                <div className="w-[40%] flex flex-col min-h-[100px]">
+                                    <p className="font-semibold">Wallet address:</p>
+                                    <p className="text-[0.9rem] w-full break-all">{address}</p>
+                                    <p className="font-semibold mt-4">Currency:</p>
+                                    <p className="text-[0.9rem] w-full break-all">XRP</p>
+                                    <p className="font-semibold mt-4">Duration: {duration} day(s)</p>
+                                </div>
+                            </div>
+                            <div className="bg-DarkGray p-2 font-semibold mb-3 text-[1rem] mt-6 between">
+                                <div className="w-[60%]">Services</div>
+                                <div className="w-[40%] between">
+                                    <div>Qty</div>
+                                    <div>Rate</div>
+                                    <div>Amount</div>
+                                </div>
+                            </div>
+                            <div className="mt-6 between">
+                                <div className="w-[60%] flex-col flex">
+                                    <p className="text-[.9rem] font-semibold">{serviceTitle}</p>
+                                    <p>{description}</p>
+                                </div>
+                                <div className="w-[40%] between">
+                                    <div>{quantity}</div>
+                                    <div>{rate}</div>
+                                    <div>XRP {amount}</div>
+                                </div>
+                            </div>
+                            <div className="mt-10 between">
+                                <div className="flex flex-col">
+                                    <p>Payment: {payment} installation(s)</p>
+                                    <p>Initial deposit {deposit}%: XRP {depositTotal} </p>
+                                </div>
+                                <div className="flex flex-col w-[40%]">
+                                    <div>
+                                        <div className="between w-full">
+                                            <p>Sub Total: </p>
+                                            <p>{amount}</p>
+                                        </div>
+                                        <div className="between w-full">
+                                            <p>Discount: </p>
+                                            <p>{discount}</p>
+                                        </div>
+                                    </div>
+                                    <div className="between w-full mt-3 border-t pt-3">
+                                            <p>Total:</p>
+                                            <p>{total}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="flex flex-col w-[60%]">
+                                <p className="font-bold">Terms and Condition:</p>
+                                <p className="break-all">{terms}</p>
+                            </div>
+                        </div>
+                    </PrintSection>
                     <div className="flex justify-center mt-6">
-                    <button
-                        onClick={handlePrint}
-                        className="bg-blue-500 text-black px-4 py-2 rounded-md shadow-md hover:bg-blue-600 transition duration-300"
-                    >
-                        Print
-                    </button>
-                </div>
-                </div>
-                <PrintSection>
-                    <div className="h-screen border rounded-lg p-8" id="print-section">
-                        {InvoiceInfo && (
-                            <div className="w-full between">
-                                <div>
-                                    <h3 className="font-bold text-md">{InvoiceInfo.businessName}</h3>
-                                    <p className="text-sm">{InvoiceInfo.businessEmail}</p>
-                                </div>
-                                <div className="mr-10">
-                                    <Image src="/icons/logo.png" alt="business photo" width={20} height={20}/>
-                                </div>
-                            </div>
-                        )}
-                        <div className="center mt-16">
-                            <div className="w-[60%] flex flex-col min-h-[160px]">
-                                <h4 className="font-semibold text-md mb-3">BILL TO</h4>
-                                <p className="w-full break-all">{clientName}</p>
-                                <p className="w-full break-all">{clientEmail}</p>
-                            </div>
-                            <div className="w-[40%] flex flex-col min-h-[100px]">
-                                <p className="font-semibold">Wallet address:</p>
-                                <p className="text-[0.9rem] w-full break-all">{address}</p>
-                                <p className="font-semibold mt-4">Currency:</p>
-                                <p className="text-[0.9rem] w-full break-all">XRP</p>
-                                <p className="font-semibold mt-4">Duration: {duration} day(s)</p>
-                            </div>
-                        </div>
-                        <div className="bg-[#F7F7F7] p-2 mb-3 mt-6 between">
-                            <div className="w-[60%]">Services</div>
-                            <div className="w-[40%] between">
-                                <div>Qty</div>
-                                <div>Rate</div>
-                                <div>Amount</div>
-                            </div>
-                        </div>
-                        <div className="p-2 mt-6 between">
-                            <div className="w-[60%] flex-col flex">
-                                <p>{serviceTitle}</p>
-                                <p>{description}</p>
-                            </div>
-                            <div className="w-[40%] between">
-                                <div>{quantity}</div>
-                                <div>{rate}</div>
-                                <div>XRP {amount}</div>
-                            </div>
-                        </div>
-                        <div className="p-2 mt-10 between">
-                            <div className="flex flex-col">
-                                <p>Payment: {payment} installation(s)</p>
-                                <p>Initial deposit {deposit}%: XRP {depositTotal} </p>
-                            </div>
-                            <div className="flex flex-col w-[40%]">
-                                <div>
-                                    <div className="between w-full">
-                                        <p>Sub Total: </p>
-                                        <p>{amount}</p>
-                                    </div>
-                                    <div className="between w-full">
-                                        <p>Discount: </p>
-                                        <p>{discount}</p>
-                                    </div>
-                                </div>
-                                <div className="between w-full mt-3 border-t pt-3">
-                                        <p>Total:</p>
-                                        <p>{total}</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="flex flex-col p-2 w-[60%]">
-                            <p className="font-bold">Terms and Condition:</p>
-                            <p className="break-all">{terms}</p>
-                        </div>
+                        <button
+                            onClick={handlePrint}
+                            className="bg-blue text-white px-4 py-2 rounded-md shadow-md hover:bg-blue-600 transition duration-300"
+                        >
+                            Print and save
+                        </button>
                     </div>
-                </PrintSection>
+                </div>
             </div>
         </div>
     );

@@ -90,7 +90,7 @@ const Auth = () => {
                 name="businessName"
                 id="businessName"
                 placeholder="Enter your Business Name"
-                className="border outline-none border-DarkGray px-5 py-3 text-black rounded-lg"
+                className="border outline-none border-DarkGray px-5 py-3 text-black  "
                 onChange={handleInputChange}
               />
             </div>
@@ -113,7 +113,7 @@ const Auth = () => {
                 type="file"
                 name="businessLogo"
                 id="businessPhoto"
-                className="border outline-none border-DarkGray px-5 py-3 text-black rounded-lg hidden"
+                className="border outline-none border-DarkGray px-5 py-3 text-black   hidden"
                 onChange={handleInputChange}
                 accept="image/*"
               />
