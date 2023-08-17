@@ -23,12 +23,7 @@ const ProfileNav = () => {
 
   return (
     <div className="ended gap-3">
-      <Web3Button
-        label={undefined}
-        avatar={undefined}
-        balance={undefined}
-        icon={undefined}
-      />
+      <Web3Button />
     </div>
   );
 };
