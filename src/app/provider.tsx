@@ -1,26 +1,21 @@
 "use client";
-
 import {
   EthereumClient,
   w3mConnectors,
   w3mProvider,
 } from "@web3modal/ethereum";
 import { Web3Modal } from "@web3modal/react";
-import { configureChains, createConfig, WagmiConfig, useAccount } from "wagmi";
+import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import { arbitrum, mainnet, polygon } from "wagmi/chains";
-
-declare global {
-  interface Window {
-    ethereum?: any;
-  }
-}
 
 const Providers = ({ children }: { children: React.ReactNode }) => {
   const chains = [arbitrum, mainnet, polygon];
-  const projectId = "773582bebd2977bef442cdd95e2ae138";
+  const projectId = "eb20419c27ebbb7536a787f7cb58f1ee";
+
   const { publicClient } = configureChains(chains, [
     w3mProvider({ projectId }),
   ]);
+
   const wagmiConfig = createConfig({
     autoConnect: true,
     connectors: w3mConnectors({ projectId, chains }),
@@ -31,6 +26,7 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <WagmiConfig config={wagmiConfig}>{children}</WagmiConfig>
+
       <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
     </>
   );

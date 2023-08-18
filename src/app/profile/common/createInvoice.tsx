@@ -7,7 +7,6 @@ import { useAccount } from "wagmi";
 import PrintSection from "./printSection";
 import { InvoiceDocument, InvoiceStatus } from "@/utils/invoice";
 import axios from "axios";
-export const cookie = document.cookie.slice(7);
 
 const CreateInvoice: React.FC = () => {
   const { InvoiceInfo } = useInvoiceContext();
@@ -28,6 +27,7 @@ const CreateInvoice: React.FC = () => {
   const [terms, setTerms] = useState<string>("");
   const [startDate, setStartDate] = useState<string>("");
   const [endDate, setEndDate] = useState<string>("");
+  const cookie = document.cookie.slice(7);
 
   const invoiceDetails: InvoiceDocument = {
     amount: amount,
@@ -350,7 +350,7 @@ const CreateInvoice: React.FC = () => {
               <div className="mt-6 between">
                 <div className="w-[60%] flex-col flex">
                   <p className="text-[.9rem] font-semibold">{serviceTitle}</p>
-                  <p>{description}</p>
+                  <p className="break-all pr-10">{description}</p>
                 </div>
                 <div className="w-[40%] between">
                   <div>{quantity}</div>
