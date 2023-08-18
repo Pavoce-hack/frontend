@@ -355,7 +355,7 @@ const CreateInvoice: React.FC = () => {
               <div className="mt-6 between">
                 <div className="w-[60%] flex-col flex">
                   <p className="text-[.9rem] font-semibold">{serviceTitle}</p>
-                  <p>{description}</p>
+                  <p className="break-all pr-10">{description}</p>
                 </div>
                 <div className="w-[40%] between">
                   <div>{quantity}</div>
