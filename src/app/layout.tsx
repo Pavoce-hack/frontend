@@ -21,9 +21,7 @@ export default function RootLayout({
     <html lang="en" className='bg-white overflow-x-hidden'>
       <body className={inter.className}>
         <Provider>
-          <InvoiceProvider>
-            {children}
-          </InvoiceProvider>
+          {children}
         </Provider>
       </body>
     </html>

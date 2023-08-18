@@ -10,7 +10,7 @@ import { useAccount } from "wagmi";
 
 interface UserDetails {
   fullName: string;
-  walletId: `0x${string}` | undefined;
+  walletId: `0x${string}` | '';
   businessName: string;
   profilePic: File | any;
   businessLogo: File | any;
