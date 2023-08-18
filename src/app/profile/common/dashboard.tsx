@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import Logo from "@/pages/homepage/common/logo";
+import Logo from '@/app/homepage/common/logo';
 import ProfileNav from "./navbar";
 import { DashboardUtils } from '@/utils/dashboard';
 import Image from 'next/image';
