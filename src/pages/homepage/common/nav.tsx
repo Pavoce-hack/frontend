@@ -2,7 +2,7 @@
 
 import Logo from "./logo";
 import Link from "next/link";
-import { Web3Button } from "@web3modal/react";
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 const Navbar = () => {
   return (
@@ -10,7 +10,7 @@ const Navbar = () => {
       <div>
         <Logo />
       </div>
-      <div className="w-[80%] center">
+      <div className="center">
         <ul className="center gap-6 capitalize font-semibold">
           <li className="hover:scale-95 transition-all duration-300">
             <Link href="/">Home</Link>
@@ -27,7 +27,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div>
-        <Web3Button />
+        <ConnectButton />
       </div>
     </nav>
   );

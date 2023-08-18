@@ -1,7 +1,7 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import Providers from './provider';
+import Provider from './provider';
 import { InvoiceProvider } from '@/context/contextProvider';
 
 
@@ -20,11 +20,11 @@ export default function RootLayout({
   return (
     <html lang="en" className='bg-white overflow-x-hidden'>
       <body className={inter.className}>
-        <Providers>
+        <Provider>
           <InvoiceProvider>
             {children}
           </InvoiceProvider>
-        </Providers>
+        </Provider>
       </body>
     </html>
   )
