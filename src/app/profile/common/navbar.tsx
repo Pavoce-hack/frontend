@@ -1,6 +1,6 @@
 "use client";
 
-import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { Web3Button } from "@web3modal/react";
 import { useRouter, usePathname } from "next/navigation";
 import { useAccount } from "wagmi";
 import { useEffect } from "react";
@@ -23,7 +23,7 @@ const ProfileNav = () => {
 
   return (
     <div className="ended gap-3">
-      <ConnectButton />
+      <Web3Button />
     </div>
   );
 };

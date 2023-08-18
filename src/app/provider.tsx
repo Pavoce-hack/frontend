@@ -1,55 +1,30 @@
 'use client';
+import { EthereumClient, w3mConnectors, w3mProvider } from '@web3modal/ethereum'
+import { Web3Modal } from '@web3modal/react'
+import { configureChains, createConfig, WagmiConfig } from 'wagmi'
+import { arbitrum, mainnet, polygon } from 'wagmi/chains'
 
-import '@rainbow-me/rainbowkit/styles.css';
-import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
-import { configureChains, createConfig, WagmiConfig } from 'wagmi';
-import {
-  arbitrum,
-  goerli,
-  mainnet,
-  optimism,
-  polygon,
-  zora,
-} from 'wagmi/chains';
-import { publicProvider } from 'wagmi/providers/public';
+const Providers = ({ children }: { children: React.ReactNode }) => {
+    const chains = [arbitrum, mainnet, polygon]
+    const projectId = 'eb20419c27ebbb7536a787f7cb58f1ee';
 
-const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [
-    mainnet,
-    polygon,
-    optimism,
-    arbitrum,
-    zora,
-    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : []),
-  ],
-  [publicProvider()]
-);
+    const { publicClient } = configureChains(chains, [w3mProvider({ projectId })])
+    const wagmiConfig = createConfig({
+        autoConnect: true,
+        connectors: w3mConnectors({ projectId, chains }),
+        publicClient
+    })
+    const ethereumClient = new EthereumClient(wagmiConfig, chains)
 
-const { connectors } = getDefaultWallets({
-  appName: 'Ayachain',
-  projectId: '9904ebb190195acdcc552c331c1a8087',
-  chains,
-});
+    return (
+        <>
+            <WagmiConfig config={wagmiConfig}>
+                {children}
+            </WagmiConfig>
 
-const wagmiConfig = createConfig({
-  autoConnect: true,
-  connectors,
-  publicClient,
-  webSocketPublicClient,
-});
-
-function Provider({
-  children,
-}: {
-  children: React.ReactNode
-}) {
-  return (
-    <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider chains={chains}>
-        {children}
-      </RainbowKitProvider>
-    </WagmiConfig>
-  );
+            <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
+        </>
+    );
 }
 
-export default Provider;
+export default Providers;
