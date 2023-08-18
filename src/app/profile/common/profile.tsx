@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import currentDateTime from "./date-time";
 import axios from "axios";
-import { cookie } from "./createInvoice";
 import { InvoiceDocument } from "@/utils/invoice";
 
 const Profile: React.FC = () => {
@@ -12,6 +11,7 @@ const Profile: React.FC = () => {
   const [pendingInvoices, setPendingInvoices] = useState(0);
   const [clearedInvoices, setClearedInvoices] = useState(0);
   const [disputedInvoices, setDisputedInvoices] = useState(0);
+  const cookie = document.cookie.slice(7);
 
   const config = {
     headers: {
@@ -26,7 +26,6 @@ const Profile: React.FC = () => {
       "http://localhost:4000/invoice/user-invoices",
       config
     );
-    console.log(invoicesResponse);
     if (invoicesResponse.status === 200) {
       setTotalInvoiced(invoicesResponse.data.requiredInvoices.length);
       setPendingInvoices(
@@ -57,7 +56,7 @@ const Profile: React.FC = () => {
 
   useEffect(() => {
     getAllInvoices();
-  }, []);
+  });
 
   return (
     <div className="w-full pt-8 flex items-center flex-col">

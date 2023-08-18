@@ -43,9 +43,7 @@ const Auth = () => {
     });
   };
 
-  const sendWalletAddressToBackend = async (
-    e: React.FormEvent<HTMLFormElement>
-  ) => {
+  const registerNewUser = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const response = await axios.post(
@@ -65,8 +63,11 @@ const Auth = () => {
       } else {
         console.error("Failed to store user details in the database.");
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error sending user details to backend:", error);
+      if (error.response.data === "User already exists!!! Login instead") {
+        window.location.href = "/";
+      }
     }
   };
 
@@ -76,7 +77,7 @@ const Auth = () => {
         <Navbar />
         {address ? (
           <form
-            onSubmit={sendWalletAddressToBackend}
+            onSubmit={registerNewUser}
             className="flex items-center flex-col gap-6 mt-16 min-h-[80vh] w-full"
           >
             <h2 className="text-xl font-bold text-center">Just a moment...</h2>
@@ -119,16 +120,14 @@ const Auth = () => {
               />
             </div>
             <div className="">
-              <Link href="/profile">
-                <CustomButton
-                  buttonType="submit"
-                  padding="10px 30px"
-                  background="#3A62F2"
-                  textColor="#FFFFFF"
-                >
-                  Continue
-                </CustomButton>
-              </Link>
+              <CustomButton
+                buttonType="submit"
+                padding="10px 30px"
+                background="#3A62F2"
+                textColor="#FFFFFF"
+              >
+                Continue
+              </CustomButton>
             </div>
           </form>
         ) : (
