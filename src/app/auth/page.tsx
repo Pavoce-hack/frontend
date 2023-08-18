@@ -1,7 +1,7 @@
 "use client";
 
 import CustomButton from "@/components/btn";
-import Navbar from "@/pages/homepage/common/nav";
+import Navbar from "../homepage/common/nav";
 import Link from "next/link";
 import { useState } from "react";
 import axios from "axios";
@@ -10,7 +10,7 @@ import { useAccount } from "wagmi";
 
 interface UserDetails {
   fullName: string;
-  walletId: `0x${string}` | '';
+  walletId: `0x${string}` | undefined;
   businessName: string;
   profilePic: File | any;
   businessLogo: File | any;
