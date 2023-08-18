@@ -16,6 +16,12 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
     })
     const ethereumClient = new EthereumClient(wagmiConfig, chains)
 
+    const config = createConfig({
+      publicClient,
+      webSocketPublicClient,
+    })
+    
+
     return (
         <>
             <WagmiConfig config={wagmiConfig}>
