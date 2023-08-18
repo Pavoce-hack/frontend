@@ -5,19 +5,20 @@ import { configureChains, createConfig, WagmiConfig } from 'wagmi'
 import { arbitrum, mainnet, polygon } from 'wagmi/chains'
 import { publicProvider } from 'wagmi/providers/public'
  
-const { publicClient, webSocketPublicClient } = configureChains(
-  [mainnet],
-  [publicProvider()],
-)
-
-const config = createConfig({
-  publicClient,
-  webSocketPublicClient,
-})
 
 const Providers = ({ children }: { children: React.ReactNode }) => {
     const chains = [arbitrum, mainnet, polygon]
     const projectId = 'eb20419c27ebbb7536a787f7cb58f1ee';
+
+    const { publicClient, webSocketPublicClient } = configureChains(
+      [mainnet],
+      [publicProvider()],
+    )
+    
+    const config = createConfig({
+      publicClient,
+      webSocketPublicClient,
+    })
 
     const { publicClient } = configureChains(chains, [w3mProvider({ projectId })])
     const wagmiConfig = createConfig({
