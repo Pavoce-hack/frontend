@@ -22,11 +22,11 @@ export default function RootLayout({
   return (
     <html lang="en" className='bg-white overflow-x-hidden'>
       <body className={inter.className}>
-        <InvoiceProvider>
-          <Providers>
+        <Providers>
+          <InvoiceProvider>
             {children}
-          </Providers>
-        </InvoiceProvider>
+          </InvoiceProvider>
+        </Providers>
       </body>
     </html>
   )
