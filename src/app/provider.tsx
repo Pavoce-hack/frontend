@@ -3,6 +3,17 @@ import { EthereumClient, w3mConnectors, w3mProvider } from '@web3modal/ethereum'
 import { Web3Modal } from '@web3modal/react'
 import { configureChains, createConfig, WagmiConfig } from 'wagmi'
 import { arbitrum, mainnet, polygon } from 'wagmi/chains'
+import { publicProvider } from 'wagmi/providers/public'
+ 
+const { publicClient, webSocketPublicClient } = configureChains(
+  [mainnet],
+  [publicProvider()],
+)
+
+const config = createConfig({
+  publicClient,
+  webSocketPublicClient,
+})
 
 const Providers = ({ children }: { children: React.ReactNode }) => {
     const chains = [arbitrum, mainnet, polygon]
@@ -16,10 +27,6 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
     })
     const ethereumClient = new EthereumClient(wagmiConfig, chains)
 
-    const config = createConfig({
-      publicClient,
-      webSocketPublicClient,
-    })
     
 
     return (
