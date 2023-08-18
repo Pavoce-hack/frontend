@@ -26,7 +26,6 @@ const Profile: React.FC = () => {
       "http://localhost:4000/invoice/user-invoices",
       config
     );
-    console.log(invoicesResponse);
     if (invoicesResponse.status === 200) {
       setTotalInvoiced(invoicesResponse.data.requiredInvoices.length);
       setPendingInvoices(

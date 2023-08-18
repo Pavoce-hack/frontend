@@ -55,9 +55,6 @@ const CreateInvoice: React.FC = () => {
     termsAndConditions: terms.split("\n"),
   };
 
-  console.log(invoiceDetails);
-  console.log("terms", terms);
-
   useEffect(() => {
     if (startDate && endDate) {
       const start = new Date(startDate);
@@ -125,7 +122,6 @@ const CreateInvoice: React.FC = () => {
       "Content-Type": "application/json",
     },
   };
-  console.log(config);
 
   const createInvoice = async () => {
     const invoiceResponse = await axios.post(
@@ -133,7 +129,6 @@ const CreateInvoice: React.FC = () => {
       invoiceDetails,
       config
     );
-    console.log(invoiceResponse);
     return invoiceResponse;
   };
 
